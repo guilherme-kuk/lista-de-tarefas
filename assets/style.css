@@ -53,7 +53,7 @@ h1 {
     border-bottom: 1px solid var(--cor-letras);
 }
 
-.data {
+.data, .data-editar {
     width: 300px;
     margin-top: 10px;
 }
@@ -128,10 +128,6 @@ main {
     color: var(--cor-letras);
 }
 
-.row {
-    height: 60px;
-}
-
 .tarefa-adicionada {
     align-items: center;
     margin: 15px 10px;
@@ -163,11 +159,6 @@ main {
     font-size: 12px;
     cursor: default;
 }
-
-/* ---------- */
-/* ADICIONAR ESTILO APÓS CLICAR PARA SMALL */
-/* ---------- */
-
 
 .item-btn {
     height: 100%;
@@ -285,4 +276,53 @@ hr {
     font-weight: bold;
     font-size: 1.2rem;
     outline: none;
+}
+
+@media(min-width: 400px) and (max-width: 660px) {
+    .container {
+        width: 400px;
+    }
+
+    .btn-add {
+        width: 300px;
+    }
+
+    .item-nome {
+        width: 150px;
+    }
+
+    .item-btn {
+        width: 80px;
+    }
+
+    #janela-edicao {
+        width: 380px;
+    }
+
+    #janela-edicao h2 {
+        margin-bottom: 10px;
+    }
+
+    hr {
+        margin-bottom: 30px;
+    }
+
+    .data, .data-editar {
+        width: 200px;
+        margin-top: 10px;
+    }
+}
+
+@media(min-width: 660px) and (max-width: 1000px) {
+    .container {
+        width: 550px;
+    }
+
+    .item-nome {
+        width: 300px;
+    }
+
+    .item-btn {
+        width: 80px;
+    }
 }

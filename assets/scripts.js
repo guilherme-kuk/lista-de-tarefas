@@ -128,16 +128,14 @@ function gerarId() {
 // Editar tarefa adicionada.
 function editarTarefa(idTarefa) {
     alternarJanelaEdicao();
-    debugger;
+    // debugger;
     let item = document.getElementById(idTarefa);
     let nomeTarefa = document.getElementById('spanNome-' + idTarefa);
     let dataTarefa = document.getElementById('smallData-' + idTarefa);
-    console.log(dataTarefa);
 
     if (item) {
         idTarefaEditar.innerHTML = '#' + idTarefa;
         inputTarefaEditar.value = nomeTarefa.innerText;
-        inputDataEditar.value = dataTarefa.innerText;
     }
 }
 
@@ -193,8 +191,17 @@ btnAtualizarTarefa.addEventListener('click', function (e) {
     db[indiceTarefa] = tarefa;
     salvarTarefaDB();
 
+
+
     if (inputTarefaEditar.value == '') {
         alternarJanelaEdicao();
+    } else if (inputDataEditar.value == '') {
+        let confirmarAtualizacao = window.confirm('Esta tarefa será atualizada sem data, deseja continuar?');
+        if (confirmarAtualizacao) {
+            let item = criarItem(tarefa);
+            tarefaAdicionada.replaceChild(item, tarefaAtual);
+            alternarJanelaEdicao();
+        }
     } else {
         let item = criarItem(tarefa);
         tarefaAdicionada.replaceChild(item, tarefaAtual);

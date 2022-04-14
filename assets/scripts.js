@@ -131,7 +131,6 @@ function editarTarefa(idTarefa) {
     // debugger;
     let item = document.getElementById(idTarefa);
     let nomeTarefa = document.getElementById('spanNome-' + idTarefa);
-    let dataTarefa = document.getElementById('smallData-' + idTarefa);
 
     if (item) {
         idTarefaEditar.innerHTML = '#' + idTarefa;
@@ -179,34 +178,37 @@ btnAtualizarTarefa.addEventListener('click', function (e) {
 
     let idTarefa = idTarefaEditar.innerHTML.replace('#', '');
 
-    let tarefa = {
-        nome: inputTarefaEditar.value,
-        id: idTarefa,
-        data: formatarDataEdicao(),
-    };
-
-    let tarefaAtual = document.getElementById(idTarefa);
-
-    const indiceTarefa = obterIndiceTarefaPorID(idTarefa);
-    db[indiceTarefa] = tarefa;
-    salvarTarefaDB();
-
-
-
     if (inputTarefaEditar.value == '') {
         alternarJanelaEdicao();
-    } else if (inputDataEditar.value == '') {
-        let confirmarAtualizacao = window.confirm('Esta tarefa será atualizada sem data, deseja continuar?');
-        if (confirmarAtualizacao) {
+        
+    } else {
+        let tarefa = {
+            nome: inputTarefaEditar.value,
+            id: idTarefa,
+            data: formatarDataEdicao(),
+        };
+
+        let tarefaAtual = document.getElementById(idTarefa);
+
+        const indiceTarefa = obterIndiceTarefaPorID(idTarefa);
+        db[indiceTarefa] = tarefa;
+        salvarTarefaDB();
+
+        if (inputDataEditar.value == '') {
+            let confirmarAtualizacao = window.confirm('Esta tarefa será atualizada sem data, deseja continuar?');
+            if (confirmarAtualizacao) {
+                let item = criarItem(tarefa);
+                tarefaAdicionada.replaceChild(item, tarefaAtual);
+                alternarJanelaEdicao();
+            }
+        } else {
             let item = criarItem(tarefa);
             tarefaAdicionada.replaceChild(item, tarefaAtual);
             alternarJanelaEdicao();
         }
-    } else {
-        let item = criarItem(tarefa);
-        tarefaAdicionada.replaceChild(item, tarefaAtual);
-        alternarJanelaEdicao();
     }
+
+
 });
 
 function obterIndiceTarefaPorID(idTarefa) {

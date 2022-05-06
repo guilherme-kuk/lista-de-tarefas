@@ -436,7 +436,7 @@ hr {
   }
 
   .item-nome {
-    width: 100px;
+    width: 140px;
   }
 
   .item-nome span {
@@ -450,7 +450,7 @@ hr {
 
   .item-btn {
     width: 65px;
-    margin-left: 40px;
+    margin-left: 0;
   }
 
   .btn-editar {

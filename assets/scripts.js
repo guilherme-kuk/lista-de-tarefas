@@ -67,6 +67,8 @@ function formatarData() {
             dateStyle: 'short',
             timeZone: 'UTC',
         })
+
+        console.log(dataFormatada.format(data));
         return dataFormatada.format(data);
     }
 }
@@ -130,10 +132,15 @@ function editarTarefa(idTarefa) {
     alternarJanelaEdicao();
     let item = document.getElementById(idTarefa);
     let nomeTarefa = document.getElementById('spanNome-' + idTarefa);
+    let dataTarefa = document.getElementById('smallData-' + idTarefa);
+
+    dataTarefa = JSON.stringify(dataTarefa.innerText);
+    dataTarefa = dataTarefa.substring(1, 11).split('/').reverse().join('-');
 
     if (item) {
         idTarefaEditar.innerHTML = '#' + idTarefa;
         inputTarefaEditar.value = nomeTarefa.innerText;
+        inputDataEditar.value = dataTarefa;
     }
 }
 
@@ -165,8 +172,8 @@ bgEdicao.addEventListener('click', function () {
 });
 
 // Fechar janela edição de Tarefa pelo ESC
-document.addEventListener('keyup', function(e) {
-    if(e.key === 'Escape') {
+document.addEventListener('keyup', function (e) {
+    if (e.key === 'Escape') {
         bgEdicao.classList.remove('abrir');
         janelaEdicao.classList.remove('abrir');
         inputTarefa.focus();
@@ -188,7 +195,7 @@ btnAtualizarTarefa.addEventListener('click', function (e) {
 
     if (inputTarefaEditar.value == '') {
         alternarJanelaEdicao();
-        
+
     } else {
         let tarefa = {
             nome: inputTarefaEditar.value,

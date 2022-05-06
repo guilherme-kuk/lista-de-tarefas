@@ -170,6 +170,7 @@ main {
     background: var(--cor-botao);
     height: 100%;
     width: 100%;
+    padding: 20px;
     border: none;
 }
 
@@ -185,9 +186,7 @@ main {
 .item-btn i {
     display: flex;
     color: var(--cor-letras);
-    height: 40px;
-    width: 40px;
-    align-items: center;
+    font-size: 14px;
     justify-content: center;
     cursor: pointer;
 }
@@ -278,9 +277,27 @@ hr {
     outline: none;
 }
 
+@media(min-width: 660px) and (max-width: 1000px) {
+    .container {
+        width: 550px;
+    }
+
+    .item-nome {
+        width: 300px;
+    }
+
+    .item-btn {
+        width: 80px;
+    }
+}
 @media(min-width: 400px) and (max-width: 660px) {
     .container {
         width: 400px;
+    }
+
+    .data, .data-editar {
+        width: 200px;
+        margin-top: 10px;
     }
 
     .btn-add {
@@ -313,16 +330,75 @@ hr {
     }
 }
 
-@media(min-width: 660px) and (max-width: 1000px) {
+@media (max-width: 375px) {
     .container {
-        width: 550px;
+        width: 90%;
+    }
+
+    .btn-add {
+        width: 300px;
     }
 
     .item-nome {
-        width: 300px;
+        width: 100px;
+    }
+
+    .tarefa-adicionada {
+        margin-left: 0;
+        margin-right: 0;
     }
 
     .item-btn {
         width: 80px;
+        margin-left: 65px;
+    }
+
+    #janela-edicao {
+        width: 90%;
+    }
+
+    #janela-edicao h2 {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    .container {
+        width: 90%;
+    }
+
+    .data, .data-editar {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .btn-add {
+        width: 250px;
+    }
+
+    .item-nome {
+        width: 100px;
+    }
+
+    .tarefa-adicionada {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .item-btn {
+        width: 65px;
+        margin-left: 40px;
+    }
+
+    .btn-editar {
+        margin-right: 6px;
+    }
+
+    #janela-edicao {
+        width: 90%;
+    }
+
+    #janela-edicao h2 {
+        margin-bottom: 10px;
     }
 }

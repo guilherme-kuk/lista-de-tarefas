@@ -1,467 +1,467 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  html {
-    height: 100%;
-  }
-  
-  :root {
-    --cor-black: #000;
-    --cor-letras: #ffffff;
-    --cor-botao: #ff0000;
-    --cor-fundo-tarefas: #434343;
-    --cor-fundo-tarefa-concluida: #abd4ab;
-    --cor-letra-tarefa-concluida: #949494;
-  }
-  
-  body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(#1f1f1f, #504f4f) fixed;
-  }
-  
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+:root {
+  --cor-black: #000;
+  --cor-letras: #ffffff;
+  --cor-botao: #ff0000;
+  --cor-fundo-tarefas: #434343;
+  --cor-fundo-tarefa-concluida: #abd4ab;
+  --cor-letra-tarefa-concluida: #949494;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(#1f1f1f, #504f4f) fixed;
+}
+
+.container {
+  background: var(--cor-black);
+  width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--cor-letras);
+}
+
+/* Inputs */
+.required {
+  color: #ff0000;
+}
+
+.tarefa,
+.editar-tarefa,
+.data,
+.data-editar {
+  background: transparent;
+  border-radius: 0 !important;
+  border: none;
+  border-bottom: 1px solid var(--cor-letras);
+}
+
+.data,
+.data-editar {
+  width: 300px;
+  margin-top: 10px;
+}
+
+#lb-input,
+.data {
+  color: var(--cor-letras);
+}
+
+.data::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+  cursor: pointer;
+}
+
+.data-editar::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+  cursor: pointer;
+}
+
+#floatingInput:focus,
+#floatingInput:valid {
+  background: transparent;
+  color: var(--cor-letras);
+  border: none;
+  border-bottom: 1px solid var(--cor-letras);
+}
+
+.tarefa:focus,
+.editar-tarefa:focus,
+.data:focus,
+.data-editar:focus {
+  outline: none;
+  box-shadow: 0 0 0 0;
+}
+
+/* BTN ADICIONAR TAREFA */
+
+.btn-add {
+  display: flex;
+  margin: 30px auto 0 auto;
+  width: 180px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  background: var(--cor-botao);
+  color: var(--cor-letras);
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.btn-add:hover {
+  border: 1px solid var(--cor-botao);
+  color: var(--cor-letras);
+  background: transparent;
+}
+
+/* Tarefas adicionadas */
+
+main {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#title-tarefas h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  color: var(--cor-letras);
+}
+
+.tarefa-adicionada {
+  align-items: center;
+  margin: 15px 10px;
+  background: var(--cor-fundo-tarefas);
+  height: 60px;
+  padding: 0 10px 0 10px;
+  border-radius: 10px;
+}
+
+.item-nome {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--cor-letras);
+  cursor: default;
+}
+
+.item-nome span {
+  color: var(--cor-letras);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.row small {
+  display: flex;
+  flex-flow: row wrap;
+  color: var(--cor-letras);
+  font-size: 12px;
+  cursor: default;
+}
+
+.item-btn {
+  height: 100%;
+  display: flex;
+  margin-left: 60px;
+}
+
+.item-btn button {
+  background: var(--cor-botao);
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  border: none;
+}
+
+.btn-editar {
+  margin-right: 8px;
+}
+
+.btn-apagar {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.item-btn i {
+  display: flex;
+  color: var(--cor-letras);
+  font-size: 14px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Janela de edição */
+
+#janela-edicao {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--cor-fundo-tarefas);
+  width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  z-index: 200;
+  display: none;
+}
+
+#janela-edicao h2 {
+  margin-bottom: 40px;
+  color: var(--cor-letras);
+}
+
+#id-tarefa-editar {
+  color: var(--cor-letras);
+}
+
+#janela-edicao.abrir,
+#bg-edicao.abrir {
+  display: block !important;
+}
+
+hr {
+  color: var(--cor-letras);
+  margin-bottom: 50px;
+}
+
+.btn-atualizar {
+  display: flex;
+  margin: 50px auto 0 auto;
+  width: 180px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  background: var(--cor-botao);
+  color: var(--cor-letras);
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.btn-atualizar:hover {
+  border: 1px solid var(--cor-botao);
+  color: var(--cor-letras);
+  background: transparent;
+}
+
+#bg-edicao {
+  position: fixed;
+  top: 0;
+  background: var(--cor-black);
+  bottom: 0;
+  left: 0;
+  opacity: 0.9;
+  z-index: 100;
+  right: 0;
+  display: none;
+}
+
+#janela-btn-fechar {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid var(--cor-fundo-tarefas);
+  background: var(--cor-botao);
+  color: var(--cor-letras);
+  font-weight: bold;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+/* Responsivo */
+@media (min-width: 660px) and (max-width: 1000px) {
   .container {
-    background: var(--cor-black);
-    width: 600px;
-    margin: 30px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+    width: 550px;
   }
-  
-  h1 {
-    text-align: center;
-    margin-bottom: 40px;
-    color: var(--cor-letras);
-  }
-  
-  /* Inputs */
-  .required {
-    color: #ff0000;
-  }
-  
-  .tarefa,
-  .editar-tarefa,
-  .data,
-  .data-editar {
-    background: transparent;
-    border-radius: 0 !important;
-    border: none;
-    border-bottom: 1px solid var(--cor-letras);
-  }
-  
-  .data,
-  .data-editar {
+
+  .item-nome {
     width: 300px;
+  }
+
+  .item-btn {
+    width: 80px;
+  }
+}
+@media (min-width: 400px) and (max-width: 660px) {
+  .container {
+    width: 400px;
+  }
+
+  .data,
+  .data-editar {
+    width: 200px;
     margin-top: 10px;
   }
-  
-  #lb-input,
-  .data {
-    color: var(--cor-letras);
-  }
-  
-  .data::-webkit-calendar-picker-indicator {
-    filter: invert(100%);
-    cursor: pointer;
-  }
-  
-  .data-editar::-webkit-calendar-picker-indicator {
-    filter: invert(100%);
-    cursor: pointer;
-  }
-  
-  #floatingInput:focus,
-  #floatingInput:valid {
-    background: transparent;
-    color: var(--cor-letras);
-    border: none;
-    border-bottom: 1px solid var(--cor-letras);
-  }
-  
-  .tarefa:focus,
-  .editar-tarefa:focus,
-  .data:focus,
-  .data-editar:focus {
-    outline: none;
-    box-shadow: 0 0 0 0;
-  }
-  
-  /* BTN ADICIONAR TAREFA */
-  
+
   .btn-add {
-    display: flex;
-    margin: 30px auto 0 auto;
-    width: 180px;
-    height: 40px;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    border-radius: 10px;
-    border: none;
-    background: var(--cor-botao);
-    color: var(--cor-letras);
-    font-weight: bold;
-    transition: 0.5s;
+    width: 300px;
   }
-  
-  .btn-add:hover {
-    border: 1px solid var(--cor-botao);
-    color: var(--cor-letras);
-    background: transparent;
-  }
-  
-  /* Tarefas adicionadas */
-  
-  main {
-    display: flex;
-    flex-flow: row wrap;
-  }
-  
-  #title-tarefas h2 {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-    color: var(--cor-letras);
-  }
-  
-  .tarefa-adicionada {
-    align-items: center;
-    margin: 15px 10px;
-    background: var(--cor-fundo-tarefas);
-    height: 60px;
-    padding: 0 10px 0 10px;
-    border-radius: 10px;
-  }
-  
+
   .item-nome {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--cor-letras);
-    cursor: default;
+    width: 200px;
   }
-  
+
   .item-nome span {
-    color: var(--cor-letras);
-    font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 16px;
   }
-  
-  .row small {
-    display: flex;
-    flex-flow: row wrap;
-    color: var(--cor-letras);
-    font-size: 12px;
-    cursor: default;
-  }
-  
+
   .item-btn {
-    height: 100%;
-    display: flex;
-    margin-left: 60px;
+    width: 80px;
+    margin-left: 15px;
   }
-  
-  .item-btn button {
-    background: var(--cor-botao);
-    height: 100%;
-    width: 100%;
-    padding: 20px;
-    border: none;
-  }
-  
-  .btn-editar {
-    margin-right: 8px;
-  }
-  
-  .btn-apagar {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-  
-  .item-btn i {
-    display: flex;
-    color: var(--cor-letras);
-    font-size: 14px;
-    justify-content: center;
-    cursor: pointer;
-  }
-  
-  /* Janela de edição */
-  
+
   #janela-edicao {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: var(--cor-fundo-tarefas);
-    width: 600px;
-    margin: 30px auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
-    z-index: 200;
-    display: none;
+    width: 380px;
   }
-  
+
   #janela-edicao h2 {
-    margin-bottom: 40px;
-    color: var(--cor-letras);
+    margin-bottom: 10px;
   }
-  
-  #id-tarefa-editar {
-    color: var(--cor-letras);
-  }
-  
-  #janela-edicao.abrir,
-  #bg-edicao.abrir {
-    display: block !important;
-  }
-  
+
   hr {
-    color: var(--cor-letras);
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
-  
-  .btn-atualizar {
-    display: flex;
-    margin: 50px auto 0 auto;
-    width: 180px;
-    height: 40px;
-    justify-content: center;
-    align-items: center;
-    padding: 5px;
-    border-radius: 10px;
-    border: none;
-    background: var(--cor-botao);
-    color: var(--cor-letras);
-    font-weight: bold;
-    transition: 0.5s;
+
+  .data,
+  .data-editar {
+    width: 200px;
+    margin-top: 10px;
   }
-  
-  .btn-atualizar:hover {
-    border: 1px solid var(--cor-botao);
-    color: var(--cor-letras);
-    background: transparent;
+}
+
+@media (max-width: 399px) {
+  .container {
+    width: 90%;
   }
-  
-  #bg-edicao {
-    position: fixed;
-    top: 0;
-    background: var(--cor-black);
-    bottom: 0;
-    left: 0;
-    opacity: 0.9;
-    z-index: 100;
-    right: 0;
-    display: none;
+
+  .data,
+  .data-editar {
+    width: 100%;
+    margin-top: 10px;
   }
-  
-  #janela-btn-fechar {
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid var(--cor-fundo-tarefas);
-    background: var(--cor-botao);
-    color: var(--cor-letras);
-    font-weight: bold;
-    font-size: 1.2rem;
-    outline: none;
+
+  .btn-add {
+    width: 90%;
   }
-  
-  /* Responsivo */
-  @media (min-width: 660px) and (max-width: 1000px) {
-    .container {
-      width: 550px;
-    }
-  
-    .item-nome {
-      width: 300px;
-    }
-  
-    .item-btn {
-      width: 80px;
-    }
+
+  .tarefa-adicionada {
+    margin-left: 0;
+    margin-right: 0;
   }
-  @media (min-width: 400px) and (max-width: 660px) {
-    .container {
-      width: 400px;
-    }
-  
-    .data,
-    .data-editar {
-      width: 200px;
-      margin-top: 10px;
-    }
-  
-    .btn-add {
-      width: 300px;
-    }
-  
-    .item-nome {
-      width: 150px;
-    }
-  
-    .item-btn {
-      width: 80px;
-    }
-  
-    #janela-edicao {
-      width: 380px;
-    }
-  
-    #janela-edicao h2 {
-      margin-bottom: 10px;
-    }
-  
-    hr {
-      margin-bottom: 30px;
-    }
-  
-    .data,
-    .data-editar {
-      width: 200px;
-      margin-top: 10px;
-    }
+  .item-nome {
+    width: 165px;
   }
-  
-  @media (max-width: 400px) {
-    .container {
-      width: 90%;
-    }
-  
-    .data,
-    .data-editar {
-      width: 100%;
-      margin-top: 10px;
-    }
-  
-    .btn-add {
-      width: 90%;
-    }
-  
-    .item-nome {
-      width: 100px;
-    }
-  
-    .tarefa-adicionada {
-      margin-left: 0;
-      margin-right: 0;
-    }
-    .item-nome {
-      width: 165px;
-    }
-  
-    .item-nome span {
-      font-size: 16px;
-    }
-  
-    .item-btn {
-      width: 80px;
-      margin-left: 0;
-    }
-  
-    #janela-edicao {
-      width: 90%;
-    }
-  
-    #janela-edicao h2 {
-      margin-bottom: 10px;
-    }
+
+  .item-nome span {
+    font-size: 16px;
   }
-  
-  @media (max-width: 375px) {
-    .container {
-      width: 90%;
-    }
-  
-    .data,
-    .data-editar {
-      width: 100%;
-      margin-top: 10px;
-    }
-  
-    .btn-add {
-      width: 90%;
-    }
-  
-    .item-nome {
-      width: 100px;
-    }
-  
-    .tarefa-adicionada {
-      margin-left: 0;
-      margin-right: 0;
-    }
-    .item-nome {
-      width: 165px;
-    }
-  
-    .item-nome span {
-      font-size: 16px;
-    }
-  
-    .item-btn {
-      width: 80px;
-      margin-left: 0;
-    }
-  
-    #janela-edicao {
-      width: 90%;
-    }
-  
-    #janela-edicao h2 {
-      margin-bottom: 10px;
-    }
+
+  .item-btn {
+    width: 80px;
+    margin-left: 0;
   }
-  
-  @media (max-width: 320px) {
-    .container {
-      width: 90%;
-    }
-  
-    .data,
-    .data-editar {
-      width: 100%;
-      margin-top: 10px;
-    }
-  
-    .btn-add {
-      width: 250px;
-    }
-  
-    .item-nome {
-      width: 100px;
-    }
-  
-    .item-nome span {
-      font-size: 14px;
-    }
-  
-    .tarefa-adicionada {
-      margin-left: 0;
-      margin-right: 0;
-    }
-  
-    .item-btn {
-      width: 65px;
-      margin-left: 40px;
-    }
-  
-    .btn-editar {
-      margin-right: 6px;
-    }
-  
-    #janela-edicao {
-      width: 90%;
-    }
-  
-    #janela-edicao h2 {
-      margin-bottom: 10px;
-    }
+
+  #janela-edicao {
+    width: 90%;
   }
-  
+
+  #janela-edicao h2 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  .container {
+    width: 90%;
+  }
+
+  .data,
+  .data-editar {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .btn-add {
+    width: 90%;
+  }
+
+  .item-nome {
+    width: 100px;
+  }
+
+  .tarefa-adicionada {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .item-nome {
+    width: 165px;
+  }
+
+  .item-nome span {
+    font-size: 16px;
+  }
+
+  .item-btn {
+    width: 70px;
+    margin-left: 0;
+  }
+
+  #janela-edicao {
+    width: 90%;
+  }
+
+  #janela-edicao h2 {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    width: 90%;
+  }
+
+  .data,
+  .data-editar {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .btn-add {
+    width: 250px;
+  }
+
+  .item-nome {
+    width: 100px;
+  }
+
+  .item-nome span {
+    font-size: 14px;
+  }
+
+  .tarefa-adicionada {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .item-btn {
+    width: 65px;
+    margin-left: 40px;
+  }
+
+  .btn-editar {
+    margin-right: 6px;
+  }
+
+  #janela-edicao {
+    width: 90%;
+  }
+
+  #janela-edicao h2 {
+    margin-bottom: 10px;
+  }
+}

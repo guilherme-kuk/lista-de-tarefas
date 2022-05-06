@@ -128,7 +128,6 @@ function gerarId() {
 // Editar tarefa adicionada.
 function editarTarefa(idTarefa) {
     alternarJanelaEdicao();
-    // debugger;
     let item = document.getElementById(idTarefa);
     let nomeTarefa = document.getElementById('spanNome-' + idTarefa);
 
@@ -158,12 +157,21 @@ function apagar(idTarefa) {
 //Abrir e fechar janela edição de Tarefa pelo X.
 btnFecharJanelaEdicao.addEventListener('click', function () {
     alternarJanelaEdicao();
-})
+});
 
 // Fechar janela edição de Tarefa pelo background.
 bgEdicao.addEventListener('click', function () {
     alternarJanelaEdicao();
 });
+
+// Fechar janela edição de Tarefa pelo ESC
+document.addEventListener('keyup', function(e) {
+    if(e.key === 'Escape') {
+        bgEdicao.classList.remove('abrir');
+        janelaEdicao.classList.remove('abrir');
+        inputTarefa.focus();
+    }
+})
 
 // função para remover classe 'abrir' e voltar tela principal.
 function alternarJanelaEdicao() {
